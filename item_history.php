@@ -97,7 +97,13 @@ if (isset($_GET['code'])) {
                         <?php
                         foreach ($conditions as $key => $value) {
 
-                            $statusColor = ($value == 'Yes') ? 'danger' : 'success';
+                            // Context-aware coloring
+                                if ($key === 'working') {
+                                    $statusColor = ($value === 'Yes') ? 'success' : 'danger';
+                                } else {
+                                    $statusColor = ($value === 'Yes') ? 'danger' : 'success';
+                                }
+
 
                             echo "
                             <div class='col-md-3 mb-2'>
